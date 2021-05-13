@@ -512,7 +512,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n    \"name\": \"app.acme.com_vs_443\",\r\n    \"destination\": \"10.1.10.200:443\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"pool\": \"app.acme.com_pool\",\r\n    \"persist\": [ {\"name\": \"acme_cookie\"} ],\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_https\"}, {\"context\": \"all\", \"name\": \"tcp\"}, {\"context\": \"clientside\", \"name\": \"app.acme.com_client-ssl\"}] },\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+									"raw": "{ \r\n    \"name\": \"app.acme.com_vs_443\",\r\n    \"destination\": \"10.1.10.100:443\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"pool\": \"app.acme.com_pool\",\r\n    \"persist\": [ {\"name\": \"acme_cookie\"} ],\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_https\"}, {\"context\": \"all\", \"name\": \"tcp\"}, {\"context\": \"clientside\", \"name\": \"app.acme.com_client-ssl\"}] },\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -577,7 +577,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n    \"name\": \"app.acme.com_vs_80\",\r\n    \"destination\": \"10.1.10.200:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+									"raw": "{ \r\n    \"name\": \"app.acme.com_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -766,7 +766,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{ \r\n    \"name\": \"app.acme.com_vs\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_https\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}, {\"context\": \"clientside\", \"name\": \"app.acme.com_client-ssl\"}] }\r\n}",
+											"raw": "{ \r\n    \"name\": \"app.acme.com_vs_443\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_https\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}, {\"context\": \"clientside\", \"name\": \"app.acme.com_client-ssl\"}] }\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -774,7 +774,7 @@
 											}
 										},
 										"url": {
-											"raw": "https://{{big-ip}}/mgmt/tm/ltm/virtual/app.acme.com_vs",
+											"raw": "https://{{big-ip}}/mgmt/tm/ltm/virtual/app.acme.com_vs_443",
 											"protocol": "https",
 											"host": [
 												"{{big-ip}}"
@@ -784,7 +784,7 @@
 												"tm",
 												"ltm",
 												"virtual",
-												"app.acme.com_vs"
+												"app.acme.com_vs_443"
 											]
 										}
 									},
@@ -1825,7 +1825,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": " {\r\n     \"class\": \"AS3\",\r\n     \"action\": \"deploy\",\r\n     \"persist\": true,\r\n     \"declaration\": {\r\n         \"class\": \"ADC\",\r\n         \"schemaVersion\": \"3.0.0\",\r\n         \"id\": \"example-declaration-01\",\r\n         \"label\": \"Sample 1\",\r\n         \"remark\": \"Simple HTTP application with round robin pool\",\r\n         \"Sample_01\": {\r\n             \"class\": \"Tenant\",\r\n             \"defaultRouteDomain\": 0,\r\n             \"Application_1\": {\r\n                 \"class\": \"Application\",\r\n                 \"template\": \"http\",\r\n             \"serviceMain\": {\r\n                 \"class\": \"Service_HTTP\",\r\n                 \"virtualAddresses\": [\r\n                     \"10.0.10.201\"\r\n                 ],\r\n                 \"pool\": \"web_pool\"\r\n                 },\r\n                 \"web_pool\": {\r\n                     \"class\": \"Pool\",\r\n                     \"monitors\": [\r\n                         \"http\"\r\n                     ],\r\n                     \"members\": [\r\n                         {\r\n                             \"servicePort\": 80,\r\n                             \"serverAddresses\": [\r\n                                 \"10.1.20.36\"\r\n                             ]\r\n                         }\r\n                     ]\r\n                 }\r\n             }\r\n         }\r\n     }\r\n }",
+									"raw": " {\r\n     \"class\": \"AS3\",\r\n     \"action\": \"deploy\",\r\n     \"persist\": true,\r\n     \"declaration\": {\r\n         \"class\": \"ADC\",\r\n         \"schemaVersion\": \"3.0.0\",\r\n         \"id\": \"example-declaration-01\",\r\n         \"label\": \"Sample 1\",\r\n         \"remark\": \"Simple HTTP application with round robin pool\",\r\n         \"Sample_01\": {\r\n             \"class\": \"Tenant\",\r\n             \"defaultRouteDomain\": 0,\r\n             \"Application_1\": {\r\n                 \"class\": \"Application\",\r\n                 \"template\": \"http\",\r\n             \"serviceMain\": {\r\n                 \"class\": \"Service_HTTP\",\r\n                 \"virtualAddresses\": [\r\n                     \"10.0.10.100\"\r\n                 ],\r\n                 \"pool\": \"web_pool\"\r\n                 },\r\n                 \"web_pool\": {\r\n                     \"class\": \"Pool\",\r\n                     \"monitors\": [\r\n                         \"http\"\r\n                     ],\r\n                     \"members\": [\r\n                         {\r\n                             \"servicePort\": 80,\r\n                             \"serverAddresses\": [\r\n                                 \"10.1.20.36\"\r\n                             ]\r\n                         }\r\n                     ]\r\n                 }\r\n             }\r\n         }\r\n     }\r\n }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1929,7 +1929,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": " {\r\n     \"class\": \"AS3\",\r\n     \"action\": \"deploy\",\r\n     \"persist\": true,\r\n     \"declaration\": {\r\n         \"class\": \"ADC\",\r\n         \"schemaVersion\": \"3.0.0\",\r\n         \"id\": \"example-declaration-01\",\r\n         \"label\": \"Sample 1\",\r\n         \"remark\": \"Simple HTTP application with round robin pool\",\r\n         \"Sample_01\": {\r\n             \"class\": \"Tenant\",\r\n             \"defaultRouteDomain\": 0,\r\n             \"Application_1\": {\r\n                 \"class\": \"Application\",\r\n                 \"template\": \"http\",\r\n             \"serviceMain\": {\r\n                 \"class\": \"Service_HTTP\",\r\n                 \"virtualAddresses\": [\r\n                     \"10.0.10.201\"\r\n                 ],\r\n                 \"pool\": \"web_pool\"\r\n                 },\r\n                 \"web_pool\": {\r\n                     \"class\": \"Pool\",\r\n                     \"monitors\": [\r\n                         \"http\"\r\n                     ],\r\n                     \"members\": [\r\n                         {\r\n                             \"servicePort\": 80,\r\n                             \"serverAddresses\": [\r\n                                 \"10.1.20.35\",\r\n                                 \"10.1.20.36\"\r\n                             ]\r\n                         }\r\n                     ]\r\n                 }\r\n             }\r\n         }\r\n     }\r\n }",
+									"raw": " {\r\n     \"class\": \"AS3\",\r\n     \"action\": \"deploy\",\r\n     \"persist\": true,\r\n     \"declaration\": {\r\n         \"class\": \"ADC\",\r\n         \"schemaVersion\": \"3.0.0\",\r\n         \"id\": \"example-declaration-01\",\r\n         \"label\": \"Sample 1\",\r\n         \"remark\": \"Simple HTTP application with round robin pool\",\r\n         \"Sample_01\": {\r\n             \"class\": \"Tenant\",\r\n             \"defaultRouteDomain\": 0,\r\n             \"Application_1\": {\r\n                 \"class\": \"Application\",\r\n                 \"template\": \"http\",\r\n             \"serviceMain\": {\r\n                 \"class\": \"Service_HTTP\",\r\n                 \"virtualAddresses\": [\r\n                     \"10.0.10.100\"\r\n                 ],\r\n                 \"pool\": \"web_pool\"\r\n                 },\r\n                 \"web_pool\": {\r\n                     \"class\": \"Pool\",\r\n                     \"monitors\": [\r\n                         \"http\"\r\n                     ],\r\n                     \"members\": [\r\n                         {\r\n                             \"servicePort\": 80,\r\n                             \"serverAddresses\": [\r\n                                 \"10.1.20.33\",\r\n                                 \"10.1.20.34\"\r\n                             ]\r\n                         }\r\n                     ]\r\n                 }\r\n             }\r\n         }\r\n     }\r\n }",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1987,7 +1987,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{big-ip}}/mgmt/shared/appsvcs/declare/acme",
+									"raw": "https://{{big-ip}}/mgmt/shared/appsvcs/declare/Sample_01",
 									"protocol": "https",
 									"host": [
 										"{{big-ip}}"
@@ -1997,7 +1997,7 @@
 										"shared",
 										"appsvcs",
 										"declare",
-										"acme"
+										"Sample_01"
 									]
 								}
 							},
