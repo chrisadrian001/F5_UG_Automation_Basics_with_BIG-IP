@@ -25,7 +25,7 @@ To access your dedicated student lab environment, you will need a web browser an
 #. Login with the following credentials:
 
     +------------+--------------+
-    | User:      | f5lab\user1  |
+    | User:      | f5lab\\user1 |
     +------------+--------------+
     | Password:  | user1        |
     +------------+--------------+
@@ -149,25 +149,25 @@ Task 1.3: Update
 Task 1.4: Delete
 -----------------------------
 
-.. |chrome| image:: /docs/media/lab01/chrome.png
-.. |bookmark| image:: /docs/media/lab01/bookmark.png
-.. |postman| image:: /docs/media/lab01/postman.png
-.. |collection| image:: /docs/media/lab01/collection.png
-.. |environment| image:: /docs/media/lab01/environment.png
-.. |expand| image:: /docs/media/lab01/expand.png
-.. |task1_1| image:: /docs/media/lab01/task1_1.png
-.. |view_enviro| image:: /docs/media/lab01/view_enviro.png
-.. |bigip_var| image:: /docs/media/lab01/bigip_var.png
-.. |post| image:: /docs/media/lab01/post.png
-.. |json_node| image:: /docs/media/lab01/json_node.png
-.. |create_node| image:: /docs/media/lab01/create_node.png
-.. |200_oknode| image:: /docs/media/lab01/200_ok_node.png
-.. |node1| image:: /docs/media/lab01/node1.png
-.. |http_monitor| image:: /docs/media/lab01/http_monitor.png
-.. |repeat| image:: /docs/media/lab01/repeat.png
-.. |vs_app| image:: /docs/media/lab01/vs_app.png
-.. |attach_profile| image:: /docs/media/lab01/attach_profile.png
-.. |automap| image:: ./docs/media/lab01/automap.png
-.. |resources| image:: /docs/media/lab01/resources.png
-.. |app_pool| image:: /docs/media/lab01/app_pool.png
-.. |member| image:: /docs/media/lab01/member.png
+.. |chrome| image:: ./media/chrome.png
+.. |bookmark| image:: ./media/bookmark.png
+.. |postman| image:: ./media/postman.png
+.. |collection| image:: ./media/collection.png
+.. |environment| image:: ./media/environment.png
+.. |expand| image:: ./media/expand.png
+.. |task1_1| image:: ./media/task1_1.png
+.. |view_enviro| image:: ./media/view_enviro.png
+.. |bigip_var| image:: ./media/bigip_var.png
+.. |post| image:: ./media/post.png
+.. |json_node| image:: ./media/json_node.png
+.. |create_node| image:: ./media/create_node.png
+.. |200_oknode| image:: ./media/200_ok_node.png
+.. |node1| image:: ./media/node1.png
+.. |http_monitor| image:: ./media/http_monitor.png
+.. |repeat| image:: ./media/repeat.png
+.. |vs_app| image:: ./media/vs_app.png
+.. |attach_profile| image:: ./media/attach_profile.png
+.. |automap| image:: ../media/automap.png
+.. |resources| image:: ./media/resources.png
+.. |app_pool| image:: ./media/app_pool.png
+.. |member| image:: ./media/member.png
