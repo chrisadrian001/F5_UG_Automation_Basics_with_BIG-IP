@@ -47,7 +47,7 @@ To access your dedicated student lab environment, you will need a web browser an
 
 Task 0: Postman
 ----------------------------
-For this lab we are going to use a tool called Postman.  This is a tool that can be used to send API calls.  We use it to craft and submit calls to the REST API of the BIG-IP.  `Postman Products <https://www.postman.com/products/`__
+For this lab we are going to use a tool called Postman.  This is a tool that can be used to send API calls.  We use it to craft and submit calls to the REST API of the BIG-IP.  `Postman Products <https://www.postman.com/products/>`__
 
 #. Locate the icon on the Desktop for Postman
 
@@ -58,7 +58,7 @@ For this lab we are going to use a tool called Postman.  This is a tool that can
 #. A collection has been loaded along with an environment file:
 
     +-----------------+-----------------+
-    |  |collection|   |  |environment   |
+    |  |collection|   |  |environment|  |
     +-----------------+-----------------+
 
 #. Click on the carrot next to expand the collection and expand **Lab 1 - Imperative Automation with iControl**
@@ -285,7 +285,7 @@ So far we have learned how to create, list and modify configuration on our BIG-I
 .. |post| image:: ./media/post.png
 .. |json_node| image:: ./media/json_node.png
 .. |create_node| image:: ./media/create_node.png
-.. |200_oknode| image:: ./media/200_ok_node.png
+.. |200_ok_node| image:: ./media/200_ok_node.png
 .. |node1| image:: ./media/node1.png
 .. |http_monitor| image:: ./media/http_monitor.png
 .. |repeat| image:: ./media/repeat.png
