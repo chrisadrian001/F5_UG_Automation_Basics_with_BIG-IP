@@ -141,7 +141,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 Task 1.2: Read
 -----------------------------
 
-#. 
+#.
 
 Task 1.3: Update
 -----------------------------
@@ -149,25 +149,25 @@ Task 1.3: Update
 Task 1.4: Delete
 -----------------------------
 
-.. |chrome| image:: ./docs/media/lab01/chrome.png
-.. |bookmark| image:: ./docs/media/lab01/bookmark.png
-.. |postman| image:: ./docs/media/lab01/postman.png
-.. |collection| image:: ./docs/media/lab01/collection.png
-.. |environment| image:: ./docs/media/lab01/environment.png
-.. |expand| image:: ./docs/media/lab01/expand.png
-.. |task1_1| image:: ./docs/media/lab01/task1_1.png
-.. |view_enviro| image:: ./docs/media/lab01/view_enviro.png
-.. |bigip_var| image:: ./docs/media/lab01/bigip_var.png
-.. |post| image:: ./docs/media/lab01/post.png
-.. |json_node| image:: ./docs/media/lab01/json_node.png
-.. |create_node| image:: ./docs/media/lab01/create_node.png
-.. |200_oknode| image:: ./docs/media/lab01/200_ok_node.png
-.. |node1| image:: ./docs/media/lab01/node1.png
-.. |http_monitor| image:: ./docs/media/lab01/http_monitor.png
-.. |repeat| image:: ./docs/media/lab01/repeat.png
-.. |vs_app| image:: ./docs/media/lab01/vs_app.png
-.. |attach_profile| image:: ./docs/media/lab01/attach_profile.png
+.. |chrome| image:: /docs/media/lab01/chrome.png
+.. |bookmark| image:: /docs/media/lab01/bookmark.png
+.. |postman| image:: /docs/media/lab01/postman.png
+.. |collection| image:: /docs/media/lab01/collection.png
+.. |environment| image:: /docs/media/lab01/environment.png
+.. |expand| image:: /docs/media/lab01/expand.png
+.. |task1_1| image:: /docs/media/lab01/task1_1.png
+.. |view_enviro| image:: /docs/media/lab01/view_enviro.png
+.. |bigip_var| image:: /docs/media/lab01/bigip_var.png
+.. |post| image:: /docs/media/lab01/post.png
+.. |json_node| image:: /docs/media/lab01/json_node.png
+.. |create_node| image:: /docs/media/lab01/create_node.png
+.. |200_oknode| image:: /docs/media/lab01/200_ok_node.png
+.. |node1| image:: /docs/media/lab01/node1.png
+.. |http_monitor| image:: /docs/media/lab01/http_monitor.png
+.. |repeat| image:: /docs/media/lab01/repeat.png
+.. |vs_app| image:: /docs/media/lab01/vs_app.png
+.. |attach_profile| image:: /docs/media/lab01/attach_profile.png
 .. |automap| image:: ./docs/media/lab01/automap.png
-.. |resources| image:: ./docs/media/lab01/resources.png
-.. |app_pool| image:: ./docs/media/lab01/app_pool.png
-.. |member| image:: ./docs/media/lab01/member.png
+.. |resources| image:: /docs/media/lab01/resources.png
+.. |app_pool| image:: /docs/media/lab01/app_pool.png
+.. |member| image:: /docs/media/lab01/member.png
