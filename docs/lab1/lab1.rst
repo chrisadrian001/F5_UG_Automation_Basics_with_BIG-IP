@@ -98,7 +98,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 
 #. At the bottom of the Postman screen you will see the response from the BIG-IP.  We want to see a **200 OK** response to know that the BIG-IP accepted our call and processed our request.  Looking at the return boy we can see that our name and address were transmitted.
 
-    |200_ok_node|
+    |200_OK_node|
 
 #. Return to Chrome and the BIG-IP.  Navigate back to **Local Traffic --> Nodes --> Nodes List**
 
@@ -285,7 +285,7 @@ So far we have learned how to create, list and modify configuration on our BIG-I
 .. |post| image:: ./media/post.png
 .. |json_node| image:: ./media/json_node.png
 .. |create_node| image:: ./media/create_node.png
-.. |200_ok_node| image:: ./media/200_ok_node.png
+.. |200_OK_node| image:: ./media/200_OK_node.png
 .. |node1| image:: ./media/node1.png
 .. |http_monitor| image:: ./media/http_monitor.png
 .. |repeat| image:: ./media/repeat.png
