@@ -68,6 +68,23 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
 
     |vs_app|
 
+#. We will look at **serviceMain-Redirect** first.  Click on the Virtual Server and examine the properties.  In the description field we have a name, a destination IP Address and port defined.  Click on **Resoures** and see that the included system iRule for redirect to https is attached.
+
+    +--------------+--------------+
+    | |app_http|   | |redirect|   |
+    +--------------+--------------+
+
+#. Navigate back to **Local Traffic --> Virtual Servers --> Virtual Server List**.  Click on **serviceMain**.  Under properties we can see configuration was successful again with an IP Address and port.  Scroll down to configuration and we can see that the **acme_https** http profile is attached as will as the **clientssl** client-ssl profile.  We have also enabled SNAT Automap.
+
+    +--------------+--------------+
+    | |app_https|  | |app_conf|   |
+    +--------------+--------------+
+
+#. Click on **Resources** tab and examine the **Load Balancing** section.  An object called **web_pool** has been attached as well as a persistence profile **acme_cookie**.
+
+    |app_resource|
+
+    
 
 Task 2.2: Read
 -----------------------------
@@ -92,3 +109,7 @@ Task 2.4: Delete
 .. |ssl_cert| image:: ./media/ssl_cert.png
 .. |app_success| image:: ./media/app_success.png
 .. |vs_app| image:: ./media/vs_app.png
+.. |app_http| image:: ./media/app_http.png
+.. |redirect| image:: ./media/redirect.png
+.. |app_https| image:: ./media/app_https.png
+.. |app_conf| image:: ./media/app_conf.png
