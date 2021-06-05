@@ -229,7 +229,25 @@ We have created an application and been able to gather information about the con
 
 Task 2.4: Delete
 -----------------------------
+We have examined how to create, read and update.  Now it is time to clean up the lab.
 
+#. In Postman expand **2.4 - Delete** and click on **Delete - app.acme.com**
+
+    |2_4_delete|
+
+#. In the right pane you can see that we will be using the **DELETE** method and sending that to the declarative interface for application named **app.acme.com**.  Click on **Send** and wait for the **200 OK**
+
+    |2_4_del|
+
+#. Return to Chrome and the BiG-IP.  Navigate to **Local Traffic --> Virtual Servers --> Virtual Server List**.  In the upper right corner try to change the partition back to **app.acme.com**.  It doesn't exist.
+
+#. Navigate to **Local Traffic --> Pools ---> Pool List**.  Try to change the partition.
+
+#. The Virtual Server and Pool are gone.
+
+#. Back in Postman, expand **2.2 Read** and click on **2.2.1 Read - app.acme.com**.  Click on **Send** and you should receive a **204 No Content**
+
+    |204_nocontent|
 
 
 .. |2_1_deploy| image:: ./media/2_1_deploy.png
@@ -259,3 +277,6 @@ Task 2.4: Delete
 .. |node_down| image:: ./media/node_down.png
 .. |enable| image:: ./media/enable.png
 .. |node_up| image:: ./media/node_up.png
+.. |2_4_delete| image:: ./media/2_4_delete.png
+.. |2_4_del| image:: ./media/2_4_del.png
+.. |204_nocontent| image:: ./media/204_nocontent.png
