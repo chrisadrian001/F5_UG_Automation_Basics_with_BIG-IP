@@ -96,7 +96,7 @@ In this section we are going to make one API call to gather all the information 
 
     |2_2_read|
 
-#. Let's examine the call.  We directing this API call to **//mgmt//shared//appsvcs//declare//** which is the declarative interface of the BIG-IP.  We are asking for information on **app.acme.com**  Click **Send** and wait for the 200 OK.
+#. Let's examine the call.  We directing this API call to **/mgmt/shared/appsvcs/declare/** which is the declarative interface of the BIG-IP.  We are asking for information on **app.acme.com**  Click **Send** and wait for the 200 OK.
 
     .. code-block:: json
 
