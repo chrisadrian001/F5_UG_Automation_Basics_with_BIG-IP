@@ -98,95 +98,97 @@ In this section we are going to make one API call to gather all the information 
 
 #. Let's examine the call.  We directing this API call to **//mgmt//shared//appsvcs//declare//** which is the declarative interface of the BIG-IP.  We are asking for information on **app.acme.com**  Click **Send** and wait for the 200 OK.
 
-.. code-block:: json
-    {
-      "app.acme.com": {
-      "class": "Tenant",
-      "defaultRouteDomain": 0,
-      "app.acme.com": {
-          "class": "Application",
-          "template": "https",
-          "serviceMain": {
-              "class": "Service_HTTPS",
-              "virtualAddresses": [
-                  "10.1.10.100"
-              ],
-              "serverTLS": "app.acme.com_client-ssl",
-              "profileHTTP": {
-                  "use": "acme_https"
-              },
-              "persistenceMethods": [
-                  {
-                      "use": "acme_cookie"
-                  }
-              ],
-              "pool": "web_pool"
-          },
-          "web_pool": {
-              "class": "Pool",
-              "monitors": [
-                  {
-                      "use": "app.acme.com_monitor"
-                  }
-              ],
-              "members": [
-                  {
-                      "servicePort": 80,
-                      "serverAddresses": [
-                          "10.1.20.33"
-                      ]
-                  }
-              ]
-          },
-          "app.acme.com_monitor": {
-              "adaptive": false,
-              "interval": 10,
-              "dscp": 0,
-              "send": "GET /index.php\\r\\n",
-              "receive": "",
-              "timeUntilUp": 0,
-              "timeout": 31,
-              "class": "Monitor",
-              "monitorType": "http"
-          },
-          "acme_https": {
-              "xForwardedFor": true,
-              "class": "HTTP_Profile"
-          },
-          "acme_cookie": {
-              "cookieName": "ACMECookie",
-              "class": "Persist",
-              "persistenceMethod": "cookie"
-          },
-          "app.acme.com_client-ssl": {
-              "class": "TLS_Server",
-              "certificates": [
-                  {
-                      "certificate": "app.acme.com_client-ssl-crt"
-                  }
-              ]
-          },
-          "app.acme.com_client-ssl-crt": {
-              "class": "Certificate",
-              "certificate": {
-                  "bigip": "/Common/acme.com-wildcard"
-              },
-              "privateKey": {
-                  "bigip": "/Common/acme.com-wildcard"
-              }
+    .. code-block:: json
+
+      {
+        "app.acme.com": {
+        "class": "Tenant",
+        "defaultRouteDomain": 0,
+        "app.acme.com": {
+            "class": "Application",
+            "template": "https",
+            "serviceMain": {
+                "class": "Service_HTTPS",
+                "virtualAddresses": [
+                        "10.1.10.100"
+                ],
+                "serverTLS": "app.acme.com_client-ssl",
+                "profileHTTP": {
+                        "use": "acme_https"
+                },
+                "persistenceMethods": [
+                    {
+                        "use": "acme_cookie"
+                    }
+                ],
+                "pool": "web_pool"
+            },
+            "web_pool": {
+                "class": "Pool",
+                "monitors": [
+                    {
+                        "use": "app.acme.com_monitor"
+                    }
+                ],
+                "members": [
+                    {
+                        "servicePort": 80,
+                        "serverAddresses": [
+                            "10.1.20.33"
+                        ]
+                    }
+                ]
+            },
+            "app.acme.com_monitor": {
+                "adaptive": false,
+                "interval": 10,
+                "dscp": 0,
+                "send": "GET /index.php\\r\\n",
+                "receive": "",
+                "timeUntilUp": 0,
+                "timeout": 31,
+                "class": "Monitor",
+                "monitorType": "http"
+            },
+            "acme_https": {
+                "xForwardedFor": true,
+                "class": "HTTP_Profile"
+            },
+            "acme_cookie": {
+                "cookieName": "ACMECookie",
+                "class": "Persist",
+                "persistenceMethod": "cookie"
+            },
+            "app.acme.com_client-ssl": {
+                "class": "TLS_Server",
+                "certificates": [
+                    {
+                        "certificate": "app.acme.com_client-ssl-crt"
+                    }
+                ]
+            },
+            "app.acme.com_client-ssl-crt": {
+                "class": "Certificate",
+                "certificate": {
+                    "bigip": "/Common/acme.com-wildcard"
+                },
+                "privateKey": {
+                    "bigip": "/Common/acme.com-wildcard"
+                }
+            }
           }
-      }
-    },
-    "class": "ADC",
-    "schemaVersion": "3.19.0",
-    "id": "app.acme.com-01",
-    "label": "app.acme.com",
-    "remark": "Simple HTTPS application with round robin pool and HTTP redirect",
-    "updateMode": "selective",
-    "controls": {
-        "archiveTimestamp": "2021-06-04T23:13:59.355Z"
+      },
+          "class": "ADC",
+          "schemaVersion": "3.19.0",
+          "id": "app.acme.com-01",
+          "label": "app.acme.com",
+          "remark": "Simple HTTPS application with round robin pool and HTTP redirect",
+          "updateMode": "selective",
+          "controls": {
+          "archiveTimestamp": "2021-06-04T23:13:59.355Z"
+          }
         }
-    }
+      }
 
 #. We get a detailed accounting of the application and all the parts that were created with the JSON declaration we used to create the application components.
 
