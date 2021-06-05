@@ -84,13 +84,148 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
 
     |app_resource|
 
-    
+#. Open a new tab in Chrome and use the bookmark for **app.acme.com** or enter http://app.acme.com in the browser address. You should reach the applicaiton.
+
+    |acme_app|
 
 Task 2.2: Read
 -----------------------------
+In this section we are going to make one API call to gather all the information on the app.acme.com application.  We are going to run this through the declarative API.
+
+#. In Postman expand **2.2 - Read** and click on **2.2.1 Read - app.acme.com**
+
+    |2_2_read|
+
+#. Let's examine the call.  We directing this API call to **//mgmt//shared//appsvcs//declare//** which is the declarative interface of the BIG-IP.  We are asking for information on **app.acme.com**  Click **Send** and wait for the 200 OK.
+
+.. code-block:: json
+    {
+      "app.acme.com": {
+      "class": "Tenant",
+      "defaultRouteDomain": 0,
+      "app.acme.com": {
+          "class": "Application",
+          "template": "https",
+          "serviceMain": {
+              "class": "Service_HTTPS",
+              "virtualAddresses": [
+                  "10.1.10.100"
+              ],
+              "serverTLS": "app.acme.com_client-ssl",
+              "profileHTTP": {
+                  "use": "acme_https"
+              },
+              "persistenceMethods": [
+                  {
+                      "use": "acme_cookie"
+                  }
+              ],
+              "pool": "web_pool"
+          },
+          "web_pool": {
+              "class": "Pool",
+              "monitors": [
+                  {
+                      "use": "app.acme.com_monitor"
+                  }
+              ],
+              "members": [
+                  {
+                      "servicePort": 80,
+                      "serverAddresses": [
+                          "10.1.20.33"
+                      ]
+                  }
+              ]
+          },
+          "app.acme.com_monitor": {
+              "adaptive": false,
+              "interval": 10,
+              "dscp": 0,
+              "send": "GET /index.php\\r\\n",
+              "receive": "",
+              "timeUntilUp": 0,
+              "timeout": 31,
+              "class": "Monitor",
+              "monitorType": "http"
+          },
+          "acme_https": {
+              "xForwardedFor": true,
+              "class": "HTTP_Profile"
+          },
+          "acme_cookie": {
+              "cookieName": "ACMECookie",
+              "class": "Persist",
+              "persistenceMethod": "cookie"
+          },
+          "app.acme.com_client-ssl": {
+              "class": "TLS_Server",
+              "certificates": [
+                  {
+                      "certificate": "app.acme.com_client-ssl-crt"
+                  }
+              ]
+          },
+          "app.acme.com_client-ssl-crt": {
+              "class": "Certificate",
+              "certificate": {
+                  "bigip": "/Common/acme.com-wildcard"
+              },
+              "privateKey": {
+                  "bigip": "/Common/acme.com-wildcard"
+              }
+          }
+      }
+    },
+    "class": "ADC",
+    "schemaVersion": "3.19.0",
+    "id": "app.acme.com-01",
+    "label": "app.acme.com",
+    "remark": "Simple HTTPS application with round robin pool and HTTP redirect",
+    "updateMode": "selective",
+    "controls": {
+        "archiveTimestamp": "2021-06-04T23:13:59.355Z"
+        }
+    }
+
+#. We get a detailed accounting of the application and all the parts that were created with the JSON declaration we used to create the application components.
 
 Task 2.3: Update
 -----------------------------
+We have created an application and been able to gather information about the configuration through the API.  Now let's update the configuration
+
+#. In Postman expand **2.3 - Update** and click on **2.3.1 Update - app.acme.com**.
+
+    |2_3_update|
+
+#. We will be using **POST** to send this request instead of **PATCH**.  AS3 is idempotent. This means that each POST you send is evaluated against existing configuration and only the changes in your **POST** are updated for the configuration.  Let's inspect the **Body** of this request to see what is changing.
+
+    |update_app|
+
+#. In this JSON declaration we will be adding in the TCP profile **f5-tcp-progressive** and we will be adding a new pool member.  However, when we add the member it will be in a disabled state.
+
+    +--------------+--------------+
+    | |add_tcp|    | |add_node|   |
+    +--------------+--------------+
+
+#. Click **Send** and wait for the **200 OK**
+
+#. Return to Chrome and the BIG-IP.  Navigate to **Local Traffic --> Virtual Servers --> Virtual Server List**.  Change the **Partition** to **app.acme.com** in order to see the objects.  Click on **serviceMain** and examine the changes.
+
+    |vs_tcp|
+
+#. Navigate to **Local Traffic --> Pools --> Pool List** and click on web_pool.  Click on **Members**.  We now have two pool members but one is administratively down.
+
+    |node_down|
+
+#. In Postman, click on **2.3.1 Update - app.acme.com**.  In the **Body** locate the new pool member and let's change the state to **enable**.  Click **Send** and wait for the 200 OK.
+
+    |enable|
+
+#. Return to Chrome and the BIG-IP.  Click on **Properties** then click back on **Members** and notice that we now have 2 pool members enabled.
+
+    |node_up|
+
 
 Task 2.4: Delete
 -----------------------------
@@ -113,3 +248,14 @@ Task 2.4: Delete
 .. |redirect| image:: ./media/redirect.png
 .. |app_https| image:: ./media/app_https.png
 .. |app_conf| image:: ./media/app_conf.png
+.. |app_resource| image:: ./media/app_resource.png
+.. |acme_app| image:: ./media/acme_app.png
+.. |2_2_read| image:: ./media/2_2_read.png
+.. |2_3_update| image:: ./media/2_3_update.png
+.. |update_app| image:: ./media/update_app.png
+.. |add_tcp| image:: ./media/add_tcp.png
+.. |add_node| image:: ./media/add_node.png
+.. |vs_tcp| image:: ./media/vs_tcp.png
+.. |node_down| image:: ./media/node_down.png
+.. |enable| image:: ./media/enable.png
+.. |node_up| image:: ./media/node_up.png
