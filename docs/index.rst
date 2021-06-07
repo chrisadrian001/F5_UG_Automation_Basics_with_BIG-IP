@@ -15,4 +15,3 @@ API calls with Application Services 3 (AS3).
 
    labinfo.rst
    intro.rst
-   lab*/lab*
