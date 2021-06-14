@@ -22,7 +22,7 @@ To access your dedicated student lab environment, you will need a web browser an
 
 #. Select your RDP resolution.
 
-#. The RDP client on your local host establishes a RDP connection to the Jump Host.
+#. The RDP client on your local host establishes an RDP connection to the Jump Host.
 
 #. Login with the following credentials:
 
@@ -45,7 +45,7 @@ To access your dedicated student lab environment, you will need a web browser an
     | Password:  | admin        |
     +------------+--------------+
 
-..Note::  You can take a look around at the BIG-IP.  At this time we do not have any application configuration.
+..Note::  You can take a look around at the BIG-IP.  At this time, we do not have any application configuration.
 
 Task 0: Postman
 ----------------------------
@@ -88,7 +88,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 
     |post|
 
-#. Now let's examine the JSON body where we plug in our configuration information for the collection we have identified. The body is in JSON format so we can identify the entity we want to configure.  In this case we have directed our call to **Node** and the two must have pieces of information to configure for a **Node** are the **name** and **dddress**.
+#. Now let's examine the JSON body where we plug in our configuration information for the collection we have identified. The body is in JSON format so we can identify the entity we want to configure.  In this case we have directed our call to **Node** and the two must have pieces of information to configure for a **Node** are the **name** and **address**.
 
     |json_node|
 
@@ -98,7 +98,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 
     |create_node|
 
-#. At the bottom of the Postman screen you will see the response from the BIG-IP.  We want to see a **200 OK** response to know that the BIG-IP accepted our call and processed our request.  Looking at the return boy we can see that our name and address were transmitted.
+#. At the bottom of the Postman screen, you will see the response from the BIG-IP.  We want to see a **200 OK** response to know that the BIG-IP accepted our call and processed our request.  Looking at the return boy we can see that our name and address were transmitted.
 
     |200_OK_node|
 
@@ -140,7 +140,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 
     |member|
 
-    .. Note:: Examine the order that we created the objects.  In imperative automation we have to know the exact order to create objects.  If we tried to create a pool but didn't have any pool members we would have an empty pool and have to **PATCH** the pool to add the a member.  If we tried to create a Virtual Server and attempted to attach a profile without creating the automation would fail.
+    .. Note:: Examine the order that we created the objects.  In imperative automation we have to know the exact order to create objects.  If we tried to create a pool but didn't have any pool members we would have an empty pool and have to **PATCH** the pool to add a member.  If we tried to create a Virtual Server and attempted to attach a profile without creating the automation would fail.
 
 #. Last step is to test that our Virtual Server works.  In Chrome you can go to https://app.acme.com or click on the **app.acme.com** bookmark.
 
@@ -154,7 +154,7 @@ In this section we are going to use the API to discover information about our co
 
     |1_2_read|
 
-#. You will notice that this is not a **POST** but a **GET**.  We are still talking tot he BIG-IP on the LTM module and requesting information on Virtual.  Click **Send**, verify the **200 OK** and then examine the body of the response.  We have gathered information on all the Virtual Servers installed on this BIG-IP.
+#. You will notice that this is not a **POST** but a **GET**.  We are still talking to the BIG-IP on the LTM module and requesting information on Virtual.  Click **Send**, verify the **200 OK** and then examine the body of the response.  We have gathered information on all the Virtual Servers installed on this BIG-IP.
 
     |list_vs|
 
@@ -170,35 +170,35 @@ In this section we are going to use the API to discover information about our co
 
 Task 1.3: Update
 -----------------------------
-So far we have learned how to **POST** configuration to our BIG-IP and how to **GET** information.  Sometimes you need to modify existing configuration.  Changing a TCP profile, modifying an SSL profile, adding nodes to pools or even changing the status of a pool member.
+So far we have learned how to **POST** configuration to our BIG-IP and how to **GET** information.  Sometimes you need to modify existing configuration; changing a TCP profile, modifying an SSL profile, adding nodes to pools or even changing the status of a pool member.
 
 #. From Postman expand on **1.3 - Update**.  Locate **1.3.1 - Patch** and expand that.  Click on **1.3.1.1 Update - LTM Virtual Server (443)** and let's examine the right pane.
 
     |1_3_update|
 
-#. We will be using the **PATCH** method to modify and/or change information on our target object.  In this case our target object is the **app.acme.com_vs_443** Virtual Server.  Click on **Body**.  We are looking for the name **app.acme.com_vs**.  We are looking in the profilesReference.  We want to keep **acme_https** so we list that profile, we are adding **f5-tcp-progressive** as a TCP profile and keeping the client ssl profile **app.acme.com_client-ssl**.  Click **Send**
+#. We will be using the **PATCH** method to modify and/or change information on our target object.  In this case our target object is the **app.acme.com_vs_443** Virtual Server.  Click on **Body**.  We are looking for the name **app.acme.com_vs**.  We are looking in the profilesReference.  We want to keep **acme_https** so we list that profile, we are adding **f5-tcp-progressive** as a TCP profile and keeping the client SSL profile **app.acme.com_client-ssl**.  Click **Send**
 
     |add_tcp|
 
 #. We receive a **200 OK**.
 
-#. Return to Chrome and our BIG-IP.  Navigate to **Local Traffic --> Virtual Server --> Virtual Server List** and locate **app.acme.com_vs_443** and click on it.  Scroll down and to see that **f5-tcp-progressive** is listed as the tcp profile.
+#. Return to Chrome and our BIG-IP.  Navigate to **Local Traffic --> Virtual Server --> Virtual Server List** and locate **app.acme.com_vs_443** and click on it.  Scroll down and to see that **f5-tcp-progressive** is listed as the TCP profile.
 
     |patch_tcp|
 
-    .. Note::  Bonus question - Instead of visiting the WebUI to discover information about the Virtual Server could we have used automation?  How?
+    .. Note::  Bonus question - Instead of visiting the WebUI to discover information about the Virtual Server, could we have used automation?  How?
 
-#. In Postman click on **1.3.1.2 Update - LTM HTTP Client SSL**.  Again we will use the **PATCH** method.  This time to the client ssl profile **app.acme.com_client_ssl**.  Click on **Body** to see that we will be adding a new Cipher String to the profile.  Click on **Send**.
+#. In Postman click on **1.3.1.2 Update - LTM HTTP Client SSL**.  Again, we will use the **PATCH** method.  This time to the client SSL profile **app.acme.com_client_ssl**.  Click on **Body** to see that we will be adding a new Cipher String to the profile.  Click on **Send**.
 
     |add_cipher|
 
 #. Verify **200 OK**
 
-#. Return to Chrome and the BIG-IP.  Navigate to **Local Traffic --> Profiles --> SSL --> Client**.  Locate the **app.acme.com_client-ssl** profile and click on it.  To see the cipher string you will need change **Configuration** to **Advanced** then scroll down to see the new **Ciphers**.
+#. Return to Chrome and the BIG-IP.  Navigate to **Local Traffic --> Profiles --> SSL --> Client**.  Locate the **app.acme.com_client-ssl** profile and click on it.  To see the cipher string, you will need change **Configuration** to **Advanced** then scroll down to see the new **Ciphers**.
 
     |patch_ssl|
 
-#. In Postman expand **1.3.2 - Add** and Click on **1.3.2.1 Create - LTM Second Node**.  We are going to use the **POST** method to add another node.  Click **Send**.
+#. In Postman expand **1.3.2 - Add** and click on **1.3.2.1 Create - LTM Second Node**.  We are going to use the **POST** method to add another node.  Click **Send**.
 
     |add_node2|
 
@@ -236,11 +236,11 @@ So far we have learned how to **POST** configuration to our BIG-IP and how to **
 
     |node_up|
 
-.. Note::  Instead of returning to the BIG-IP could we have used Postman to return information on our configuration?
+.. Note::  Instead of returning to the BIG-IP, could we have used Postman to return information on our configuration?
 
 Task 1.4: Delete
 -----------------------------
-So far we have learned how to create, list and modify configuration on our BIG-IP through imperative automation.  Now let's examine how to delete configuration from our BIG-IP.
+So far we have learned how to create, list, and modify configuration on our BIG-IP through imperative automation.  Now let's examine how to delete configuration from our BIG-IP.
 
 #. In Postman, Expand **1.4 - Delete** and click on **1.4.1 Delete - LTM Virtual Server (80)**
 
