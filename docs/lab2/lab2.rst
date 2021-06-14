@@ -4,7 +4,7 @@ Lab 2 - Declarative Automation with AS3
 Objectives
 ----------
 
-The intention of this lab will be to show how to work with declarative API calls leveraging the `Application Services 3 (AS3) <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/`__ framework.  AS3 delivers a JSON payload to the BIG-IP's declarative API interface.  Through this interface BIG-IP is able to inject the payload and create configuration.  This method allows for you to send a single API call to the BIG-IP and in turn delivers all the configuration we looked at in the imperative lab.
+The intention of this lab will be to show how to work with declarative API calls leveraging the `Application Services 3 (AS3) <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/>`__ framework.  AS3 delivers a JSON payload to the BIG-IP's declarative API interface.  Through this interface BIG-IP is able to inject the payload and create configuration.  This method allows for you to send a single API call to the BIG-IP and in turn delivers all the configuration we looked at in the imperative lab.
 
 Task 2.1: Create
 -----------------------------
@@ -263,6 +263,7 @@ We have examined how to create, read and update.  Now it is time to clean up the
 .. |client_ssl| image:: ./media/client_ssl.png
 .. |ssl_cert| image:: ./media/ssl_cert.png
 .. |app_success| image:: ./media/app_success.png
+.. |tenant| image:: ./media/tenant.png
 .. |vs_app| image:: ./media/vs_app.png
 .. |app_http| image:: ./media/app_http.png
 .. |redirect| image:: ./media/redirect.png
