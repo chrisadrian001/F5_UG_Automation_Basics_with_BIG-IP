@@ -14,6 +14,8 @@ To access your dedicated student lab environment, you will need a web browser an
 
 #. Click DEPLOYMENT located on the top left corner to display the environment
 
+    |deploy|
+
 #. Click ACCESS next to jumphost.f5lab.local
 
     |accessjh|
@@ -272,7 +274,8 @@ So far we have learned how to create, list, and modify configuration on our BIG-
 
 **This concludes Lab 1.  Proceed to Lab 2**
 
-
+.. |deploy| image:: ./media/deploy.png
+.. |accessjh| image:: ./media/accessjh.png
 .. |chrome| image:: ./media/chrome.png
 .. |bookmark| image:: ./media/bookmark.png
 .. |postman| image:: ./media/postman.png
