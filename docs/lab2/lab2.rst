@@ -8,7 +8,7 @@ The intention of this lab will be to show how to work with declarative API calls
 
 Task 2.1: Create
 -----------------------------
-In this task we are going to use AS3 JSON declaration to create two Virtual Servers (port 80 and 443), http profile, client ssl profile, persistence profile, node and pool all in one API call to our BIG-IP.
+In this task we are going to use an AS3 JSON declaration to create two Virtual Servers (port 80 and 443), http profile, client ssl profile, persistence profile, node and pool all in one API call to our BIG-IP.
 
 #. In Chrome make sure you are logged in to your BIG-IP
 
@@ -18,11 +18,11 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
     | Password:  | admin        |
     +------------+--------------+
 
-#. In Postman, expand **Lab 2 - Decalarative Automation with AS3**, **2.1 - Create** and click on **2.1.1 Deploy - app.acme.com**
+#. In Postman, expand **Lab 2 - Declarative Automation with AS3**, **2.1 - Create** and click on **2.1.1 Deploy - app.acme.com**
 
     |2_1_deploy|
 
-#. Examine the API call in the right pane.  We will use a POST method but instead of sending our calls to a specific collection we are sending it to the declarative interface at //mgmt//shared//appsvcs//declare. Click on the **Body** and let's take a deeper look at the JSON declaration.
+#. Examine the API call in the right pane.  We will use a POST method but instead of sending our calls to a specific collection we are sending it to the declarative interface at /mgmt/shared/appsvcs/declare. Click on the **Body** and let's take a deeper look at the JSON declaration.
 
     |deploy_app|
 
@@ -56,7 +56,7 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
     | Certificate Class    | |ssl_cert|   |
     +----------------------+--------------+
 
-#. We have verified we have a complete declaration.  Click on **Send** in Postman to send the complete declaration to BIG-IP.  We should receive a 200 OK an in the body of the response we should see results = success.
+#. We have verified we have a complete declaration.  Click on **Send** in Postman to send the complete declaration to BIG-IP.  We should receive a 200 OK and in the body of the response we should see results = success.
 
     |app_success|
 
@@ -74,7 +74,7 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
     | |app_http|   | |redirect|   |
     +--------------+--------------+
 
-#. Navigate back to **Local Traffic --> Virtual Servers --> Virtual Server List**.  Click on **serviceMain**.  Under properties we can see configuration was successful again with an IP Address and port.  Scroll down to configuration and we can see that the **acme_https** http profile is attached as will as the **clientssl** client-ssl profile.  We have also enabled SNAT Automap.
+#. Navigate back to **Local Traffic --> Virtual Servers --> Virtual Server List**.  Click on **serviceMain**.  Under properties we can see configuration was successful again with an IP Address and port.  Scroll down to configuration and we can see that the **acme_https** http profile is attached as well as the **app.acme.com_client-ssl** client-ssl profile.  We have also enabled SNAT Automap.
 
     +--------------+--------------+
     | |app_https|  | |app_conf|   |
@@ -84,7 +84,7 @@ In this task we are going to use AS3 JSON declaration to create two Virtual Serv
 
     |app_resource|
 
-#. Open a new tab in Chrome and use the bookmark for **app.acme.com** or enter http://app.acme.com in the browser address. You should reach the applicaiton.
+#. Open a new tab in Chrome and use the bookmark for **app.acme.com** or enter http://app.acme.com in the browser address. You should reach the application.
 
     |acme_app|
 
@@ -194,7 +194,7 @@ In this section we are going to make one API call to gather all the information 
 
 Task 2.3: Update
 -----------------------------
-We have created an application and been able to gather information about the configuration through the API.  Now let's update the configuration
+We have created an application and have been able to gather information about the configuration through the API.  Now let's update the configuration.
 
 #. In Postman expand **2.3 - Update** and click on **2.3.1 Update - app.acme.com**.
 
@@ -216,7 +216,7 @@ We have created an application and been able to gather information about the con
 
     |vs_tcp|
 
-#. Navigate to **Local Traffic --> Pools --> Pool List** and click on web_pool.  Click on **Members**.  We now have two pool members but one is administratively down.
+#. Navigate to **Local Traffic --> Pools --> Pool List** and click on web_pool.  Click on **Members**.  We now have two pool members, but one is administratively down.
 
     |node_down|
 
@@ -241,7 +241,7 @@ We have examined how to create, read and update.  Now it is time to clean up the
 
     |2_4_del|
 
-#. Return to Chrome and the BiG-IP.  Navigate to **Local Traffic --> Virtual Servers --> Virtual Server List**.  In the upper right corner try to change the partition back to **app.acme.com**.  It doesn't exist.
+#. Return to Chrome and the BIG-IP.  Navigate to **Local Traffic --> Virtual Servers --> Virtual Server List**.  In the upper right corner try to change the partition back to **app.acme.com**.  It doesn't exist.
 
 #. Navigate to **Local Traffic --> Pools ---> Pool List**.  Try to change the partition.
 
