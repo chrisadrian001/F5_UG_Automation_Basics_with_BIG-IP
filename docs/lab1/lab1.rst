@@ -98,7 +98,7 @@ For this task we will run an API call to our BIG-IP, examine that the call was p
 
     |create_node|
 
-#. At the bottom of the Postman screen, you will see the response from the BIG-IP.  We want to see a **200 OK** response to know that the BIG-IP accepted our call and processed our request.  Looking at the return boy we can see that our name and address were transmitted.
+#. At the bottom of the Postman screen, you will see the response from the BIG-IP.  We want to see a **200 OK** response to know that the BIG-IP accepted our call and processed our request.  Looking at the return body we can see that our name and address were transmitted.
 
     |200_OK_node|
 
